@@ -19,7 +19,7 @@ class Course:
         else:
             self.enrolled_students.append (student)
             print (f"The Student \"{student}\" added Successfully to Course: {self.name} !!!")
-    
+
     def remove_Student (self, student):
         if student.lower().strip() in self.enrolled_students:
             self.enrolled_students.remove (student)

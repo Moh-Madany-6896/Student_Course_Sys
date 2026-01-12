@@ -18,6 +18,7 @@ class Student:
             print ("The Grade Must Be Between 0 : 100 !!!")
         else:
             self.grade [course_name] = grade
+
     
     def enroll_course (self, course):
         if course in self.enrolled_courses:
