@@ -59,7 +59,7 @@ class Sys_Manger:
             print ("The Student OR Course not registered!!!")
 
     def search_course (self, crs_name):
-        for x in self.course.values ()
+        for x in self.course.values ():
             if crs_name.lower().strip() == x.name.lower().strip():
                 return x.name
     
