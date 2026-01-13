@@ -21,8 +21,4 @@ class Student:
 
     
     def enroll_course (self, course):
-        if course in self.enrolled_courses:
-            print ("The course already added !!!")
-        else:
-            self.enrolled_courses.append (course)
-            return self.enrolled_courses
+        self.enrolled_courses.append (course)

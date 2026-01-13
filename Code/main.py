@@ -1,4 +1,5 @@
-from .Core import app_UI
+from Core import APP_UI
 
 if __name__ == "__main__":
-    app_UI ()
+    APP_UI()
+

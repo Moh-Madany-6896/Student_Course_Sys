@@ -12,58 +12,57 @@ Options = """
   9: Show All Courses in DataBase
   10: EXIT
 """
-
+manger = Sys_Manger ()
 def ADD_STD ():
     name = input ("Please Enter Your Name: ").lower().strip()
-    add = Sys_Manger ()
-    add.add_student (name)
+    manger.add_student (name)
 
 def REMOVE_STD ():
-    num = int (input ("Please Enter The Student ID:  ").strip())
-    rv = Sys_Manger ()
-    rv.remove_student (num)
+    try:
+        num = int (input ("Please Enter The Student ID:  ").strip())
+        manger.remove_student (num)
+    except ValueError:
+        print("❌ Please enter a valid number")
 
 def ADD_CRS ():
     name = input ("Please Enter Course Name: ").lower().strip()
-    add = Sys_Manger ()
-    add.add_course (name)
+    manger.add_course (name)
 
 def REMOVE_CRS ():
     num = int (input ("Please Enter The Course ID:  ").strip())
-    rv = Sys_Manger ()
-    rv.remove_course (num)
+    manger.remove_course (num)
 
 def ENROLL_INCRS ():
     std_id = int (input ("Please Enter The Student ID:  ").strip())
     crs_id = int (input ("Please Enter The Course ID:  ").strip())
-    enroll = Sys_Manger ()
-    enroll.enroll_course (std_id, crs_id)
+    manger.enroll_course (std_id, crs_id)
 
 def ADD_GRADE_STD ():
     std_id = int (input ("Please Enter The Student ID:  ").strip())
     crs_id = int (input ("Please Enter The Course ID:  ").strip())
     grade = int (input ("Please Enter The Grade:  ").strip())
-    add = Sys_Manger ()
-    add.add_grade (std_id, crs_id, grade)
+    manger.add_grade (std_id, crs_id, grade)
 
 def SEARCH_CRS ():
     name = input ("Please Enter Course Name: ").lower().strip()
-    search = Sys_Manger ()
-    search.search_course (name)
+    result = manger.search_course (name)
+    print (result)
 
 def SHOW_STD ():
-    show_std = Sys_Manger ()
-    show_std.show_all_students ()
+    manger.show_all_students ()
 
 def SHOW_CRS ():
-    show_crs = Sys_Manger ()
-    show_crs.show_all_students ()
+    manger.show_all_courses ()
 
 
 def APP_UI ():
     while True:
         print (Options)
-        choose = int (input ("Your choice number: ").strip())
+        try:
+            choose = int(input("Your choice number: ").strip())
+        except ValueError:
+            print("❌ Please enter a valid number")
+            continue
         if choose == 1:
             ADD_STD ()
             continue
@@ -89,18 +88,20 @@ def APP_UI ():
             SHOW_STD ()
             continue
         elif choose == 9:
-            SHOW_CRS
+            SHOW_CRS ()
             continue
         elif choose == 10:
             while True:
                 x = input ("Are You Sure To EXIT? (Yes / No): ")
                 if x in ["yes", "y"]:
+                    print ("👋 Goodbye!")
                     break
                 elif x in ["no", "n"]:
                     continue
                 else:
-                    print ("Wronge Choice !!!")
-                    continue           
+                    print ("❌ Invalid choice !!!")
+                    continue
+            break           
         else:
-            print ("Wronge Choice !!!")
+            print ("❌ Invalid choice numbe !!!")
             continue
