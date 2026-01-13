@@ -25,12 +25,12 @@ class Sys_Manger:
             else:
                 print (f"❌ SORRY!!! The Student: {std_ID} has enrolled in courses")
         else:
-            print ("⚠️ This ID isn't registered!!!!")
+            print ("⚠️ This ID isn't registered in Students !!!")
     
     def add_course (self, name):
         course = Course (name)
         self.courses [course.Course_id] = course
-        print (f"✅ The course: {name} added Successfuly >>> ID is: {course.Course_id}")
+        print (f"✅ The course: {name} added Successfully >>> ID is: {course.Course_id}")
     
     def remove_course (self, crs_ID):
         if crs_ID in self.courses:
@@ -48,11 +48,24 @@ class Sys_Manger:
             student = self.students [std_id]
             course  = self.courses [crs_id]
             if course.name not in student.enrolled_courses and student.name not in course.enrolled_students:
-                student.enroll_course (course)
-                course.add_student (student)
+                student.enroll_course (course.name)
+                course.add_student (student.name)
                 print (f"✅ Student {std_id}:{student.name} enrolled in course {crs_id}:{course.name} Successfully.")
             else:
                 print ("⚠️ Already enrolled")
+        else:
+            print ("❌ Student or Course not found !!!")
+    
+    def remove_course_std (self, std_id, crs_id):
+        if std_id in self.students and crs_id in self.courses:
+            student = self.students [std_id]
+            course  = self.courses [crs_id]
+            if course.name in student.enrolled_courses and student.name in course.enrolled_students:
+                student.remove_course (course.name)
+                course.remove_Student (student.name)
+                print (f"✅ Student {std_id}:{student.name} removed from course {crs_id}:{course.name} Successfully.")
+            else:
+                print ("⚠️ NOT enrolled")
         else:
             print ("❌ Student or Course not found !!!")
 

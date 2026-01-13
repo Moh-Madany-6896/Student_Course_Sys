@@ -6,16 +6,20 @@ Options = """
   3: Add Course
   4: Remove Course
   5: Enroll In Course
-  6: Add Course Grade to Student
-  7: Search For Course
-  8: Show All Students in DataBase
-  9: Show All Courses in DataBase
-  10: EXIT
+  6: Remove Student From Course
+  7: Add Course Grade to Student
+  8: Search For Course
+  9: Show All Students in DataBase
+  10: Show All Courses in DataBase
+  11: EXIT
 """
 manger = Sys_Manger ()
 def ADD_STD ():
-    name = input ("Please Enter Your Name: ").lower().strip()
-    manger.add_student (name)
+    try:
+        name = input ("Please Enter Your Name: ").lower().strip()
+        manger.add_student (name)
+    except ValueError:
+        print("❌ Please enter a valid name")
 
 def REMOVE_STD ():
     try:
@@ -36,6 +40,11 @@ def ENROLL_INCRS ():
     std_id = int (input ("Please Enter The Student ID:  ").strip())
     crs_id = int (input ("Please Enter The Course ID:  ").strip())
     manger.enroll_course (std_id, crs_id)
+
+def RMV_FROM_CRS ():
+    std_id = int (input ("Please Enter The Student ID:  ").strip())
+    crs_id = int (input ("Please Enter The Course ID:  ").strip())
+    manger.remove_course_std (std_id, crs_id)
 
 def ADD_GRADE_STD ():
     std_id = int (input ("Please Enter The Student ID:  ").strip())
@@ -79,20 +88,23 @@ def APP_UI ():
             ENROLL_INCRS ()
             continue
         elif choose == 6:
-            ADD_GRADE_STD ()
+            RMV_FROM_CRS ()
             continue
         elif choose == 7:
-            SEARCH_CRS ()
+            ADD_GRADE_STD ()
             continue
         elif choose == 8:
-            SHOW_STD ()
+            SEARCH_CRS ()
             continue
         elif choose == 9:
-            SHOW_CRS ()
+            SHOW_STD ()
             continue
         elif choose == 10:
+            SHOW_CRS ()
+            continue
+        elif choose == 11:
             while True:
-                x = input ("Are You Sure To EXIT? (Yes / No): ")
+                x = input ("Are You Sure To EXIT? (Yes / No): ").lower().strip()
                 if x in ["yes", "y"]:
                     print ("👋 Goodbye!")
                     break

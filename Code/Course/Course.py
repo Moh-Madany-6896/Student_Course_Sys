@@ -17,8 +17,4 @@ class Course:
         self.enrolled_students.append (student)
 
     def remove_Student (self, student):
-        if student in self.enrolled_students:
-            self.enrolled_students.remove (student)
-            print (f"The Student \"{student}\" removed successfully from Course: {self.name} !!!")
-        else:
-            print (f"The Student \"{student}\" is NOT in Course: {self.name} !!!")
+        self.enrolled_students.remove (student)

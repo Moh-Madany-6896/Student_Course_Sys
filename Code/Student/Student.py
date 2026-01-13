@@ -1,5 +1,6 @@
 class Student:
     _ID_Counter = 1
+    
     def __init__(self, name):
         self.Student_id = Student._ID_Counter
         Student._ID_Counter += 1
@@ -19,6 +20,8 @@ class Student:
         else:
             self.grade [course_name] = grade
 
-    
     def enroll_course (self, course):
         self.enrolled_courses.append (course)
+    
+    def remove_course (self, course):
+        self.enrolled_courses.remove (course)
