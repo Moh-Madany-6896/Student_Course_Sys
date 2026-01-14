@@ -107,13 +107,13 @@ def APP_UI ():
                 x = input ("Are You Sure To EXIT? (Yes / No): ").lower().strip()
                 if x in ["yes", "y"]:
                     print ("👋 Goodbye!")
-                    break
+                    return
                 elif x in ["no", "n"]:
-                    continue
+                    break
                 else:
                     print ("❌ Invalid choice !!!")
                     continue
-            break           
+            continue        
         else:
-            print ("❌ Invalid choice numbe !!!")
+            print ("❌ Invalid choice number !!!")
             continue
